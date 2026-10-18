@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dapur Bu Ratna | Katalog &amp; Pesan via WhatsApp</title>
+  <meta name="description" content="Katalog masakan rumahan dan kue basah Dapur Bu Ratna. Pilih menu, masukkan keranjang, kirim pesanan lewat WhatsApp." />
+  <meta name="theme-color" content="#a9261c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <p class="badge-top">Terima pesanan harian</p>
+      <h1 id="storeName"></h1>
+      <p class="tag" id="storeTag"></p>
+      <p class="info" id="orderInfo"></p>
+    </div>
+    <svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40V18C150 0 300 36 450 22s300-26 450-8 225 8 300-6v34z" fill="currentColor"/></svg>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <label class="search">
+        <span class="sr">Cari menu</span>
+        <input type="search" id="search" placeholder="Cari menu, misal: nasi, lemper…" autocomplete="off" />
+      </label>
+      <div class="chips" id="chips" role="tablist" aria-label="Kategori"></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Menu yang kamu cari belum ada. Coba kata kunci lain ya.</p>
+    <p class="delivery" id="deliveryNote"></p>
+  </main>
+
+  <footer class="foot">
+    <strong id="footName"></strong>
+    <p id="footAddr"></p>
+    <small>© <span id="year"></span> <span id="footName2"></span></small>
+  </footer>
+
+  <!-- Bar keranjang -->
+  <div class="cartbar" id="cartbar" hidden>
+    <button type="button" id="openCart" class="cartbtn">
+      <span class="cnt" id="cartCount">0</span>
+      <span class="lbl">Lihat Keranjang</span>
+      <span class="tot" id="cartTotalBar">Rp0</span>
+    </button>
+  </div>
+
+  <!-- Laci keranjang -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="drawerTitle">Keranjang Pesanan</h2>
+      <button type="button" id="closeCart" class="x" aria-label="Tutup keranjang">×</button>
+    </div>
+
+    <div class="drawer-body">
+      <ul class="lines" id="lines"></ul>
+      <p class="empty-cart" id="emptyCart">Keranjangmu masih kosong.</p>
+
+      <div class="sum" id="sum">
+        <span>Total</span><b id="cartTotal">Rp0</b>
+      </div>
+      <p class="min-warn" id="minWarn" role="status"></p>
+
+      <form id="orderForm" class="form" novalidate>
+        <fieldset class="method">
+          <legend>Metode</legend>
+          <label><input type="radio" name="method" value="Diantar" checked /> Diantar</label>
+          <label><input type="radio" name="method" value="Ambil di tempat" /> Ambil sendiri</label>
+        </fieldset>
+        <label>Nama
+          <input type="text" id="fName" maxlength="60" placeholder="Nama kamu" autocomplete="name" />
+        </label>
+        <label id="addrWrap">Alamat pengantaran
+          <textarea id="fAddr" rows="2" maxlength="200" placeholder="Alamat lengkap + patokan"></textarea>
+        </label>
+        <label>Kapan dibutuhkan?
+          <input type="text" id="fWhen" maxlength="60" placeholder="Misal: besok jam 10 pagi" />
+        </label>
+        <label>Catatan (opsional)
+          <textarea id="fNote" rows="2" maxlength="200" placeholder="Misal: sambal dipisah, level pedas, dll."></textarea>
+        </label>
+        <p class="form-msg" id="formMsg" role="alert"></p>
+        <button type="submit" class="btn send">Kirim Pesanan via WhatsApp</button>
+        <button type="button" class="btn-link" id="clearCart">Kosongkan keranjang</button>
+      </form>
+    </div>
+  </aside>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
